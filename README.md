@@ -2,8 +2,10 @@
 ## Whats special about this game is that the snake is a series of simple png images 
 ### To play the game just make sure you're using python > 3.8 and pygame > 1.9.6 
 
-This is the second pygame game i make, i enjoy working on such projects as i learn a lot and have to solve different problems  
-I am by no means a good or experimented programmer so please help me improve by sending me comments and feedback at idriss.el.moussaouiti@gmail.com  
+This is the second pygame game i make, i enjoy working on such projects because i learn a lot and have to solve different problems in the process.  
+  
+  
+I am not an experimented programmer so please help me improve by sending me comments and feedback at idriss.el.moussaouiti@gmail.com  
 
 ### functionnalities in the game 
 - The snake is made of different png images, there are 3 different types of snake parts 
