@@ -18,5 +18,5 @@ I am not an experimented programmer so please help me improve by sending me comm
 - i added some difficulty to the game, after 30 moves the food changes positions. there is a blue pointer on the right to indicate the number of moves
 - if you lose, a menu appears with your current score, your highscore and a new game button 
 
-### please note that the game sometimes uses between 15 and 20 percent of cpu ressources, i have not been able to identify the reason but i think it's a pygame problem. So if you know a solution please let me know.
+### please note that the game sometimes uses between 15 and 20 percent of cpu ressources (i use an i5 9300h), i have not been able to identify the reason but i think it's a pygame problem. So if you know a solution please let me know.
 
