@@ -268,7 +268,7 @@ def show_snake(): # draw snake on the screen
 	pygame.draw.rect(fenetre, (255,255,0), [0,600,600,50]) # draw the message box down
 	pygame.draw.rect(fenetre, (255,69,0), [600,0,10,600]) # draw the entire move counter in red
 	pygame.draw.rect(fenetre, (255,69,0), [600,600,10,50]) # draw a white rectangle in the bottom right of the screen
-	textsurface = myfont.render(f'Placar : '+str(len(snake)-4), False, (199,21,133)) # print the current score
+	textsurface = myfont.render(f'Placar : '+str(2 * len(snake)-4), False, (199,21,133)) # print the current score
 	fenetre.blit(textsurface, (5, 605))
 	if lock == 1: # if the user has lost draw the menu
 		if highscore < len(snake)-4:
