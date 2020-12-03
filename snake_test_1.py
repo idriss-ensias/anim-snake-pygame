@@ -36,8 +36,8 @@ highscore = 0 # keeps track of scores during the game
 clicked = 0 # if the user clicks the new game button
 diff = 0 # after each move diff is incremented and when it reachs 30 the position of the food is changed and diff is assigned 0 - modulo
 fenetre = pygame.display.set_mode((610,650)) # game screen
-myfont = pygame.font.SysFont('Comic Sans MS', 20) # normal text
-myotherfont = pygame.font.SysFont('Comic Sans MS', 50) # titles
+myfont = pygame.font.SysFont('arial', 25) # normal text
+myotherfont = pygame.font.SysFont('arial', 80) # titles
 snake_thumb = pygame.image.load("thumbnail-snake.png")
 pygame.display.set_icon(snake_thumb)
 pygame.display.set_caption("Animated Snake Game")
@@ -51,7 +51,7 @@ head_eat = [pygame.image.load("image\snake_p_eat_d_30.png").convert(),pygame.ima
 snake_parts = [pygame.image.load("image\snake_p_1_30.png").convert(),pygame.image.load("image\snake_p_2_30.png").convert(),pygame.image.load("image\snake_p_3_30.png").convert(),pygame.image.load("image\snake_p_4_30.png").convert(),pygame.image.load("image\snake_p_5_30.png").convert()]
 # list of corner snake parts 
 snake_moves = [pygame.image.load("image\snake_p_d_30.png").convert(),pygame.image.load("image\snake_p_l_30.png").convert(),pygame.image.load("image\snake_p_r_30.png").convert(),pygame.image.load("image\snake_p_u_30.png").convert()]
-food = pygame.image.load("image\\food_30.png") # image of food
+food = pygame.image.load("image\\maca.png") # image of food
 
 
 def make_food(): # generate random position for food, check if new position is valid (not a snake or food position )
@@ -253,9 +253,9 @@ def show_snake(): # draw snake on the screen
 	global clicked
 	global diff
 	global highscore
-	pygame.draw.rect(fenetre, (255,255,255), [0,0,600,600]) # paint the screen white
+	pygame.draw.rect(fenetre, (250,240,230), [0,0,600,600]) # paint the screen white
 	fenetre.blit(food, reality(food_pos)) # draw the food
-	fenetre.blit(tail[direction[0]], reality(snake[0])) # draw the tail 
+	fenetre.blit(tail[direction[0]], reality(snake[0])) # draw the tail
 	if eat == 0: # check if the snake is eating or not and draw the head accordingly
 		fenetre.blit(head_m[direction[-1]], reality(snake[-1])) 
 	else:
@@ -265,28 +265,28 @@ def show_snake(): # draw snake on the screen
 			fenetre.blit(snake_parts[randint(0,len(snake_parts)-1)], reality(position))
 		else: # else draw a square with a corner, depending on the direction list
 			fenetre.blit(snake_moves[move], reality(position))
-	pygame.draw.rect(fenetre, (252,185,185), [0,600,600,50]) # draw the message box down
-	pygame.draw.rect(fenetre, (252,185,185), [600,0,10,600]) # draw the entire move counter in red 
-	pygame.draw.rect(fenetre, (255,255,255), [600,600,10,50]) # draw a white rectangle in the bottom right of the screen
-	textsurface = myfont.render('score : '+str(len(snake)-4), False, (0,0,0)) # print the current score
+	pygame.draw.rect(fenetre, (255,255,0), [0,600,600,50]) # draw the message box down
+	pygame.draw.rect(fenetre, (255,69,0), [600,0,10,600]) # draw the entire move counter in red
+	pygame.draw.rect(fenetre, (255,69,0), [600,600,10,50]) # draw a white rectangle in the bottom right of the screen
+	textsurface = myfont.render(f'Placar : '+str(2 * len(snake)-4), False, (199,21,133)) # print the current score
 	fenetre.blit(textsurface, (5, 605))
 	if lock == 1: # if the user has lost draw the menu
 		if highscore < len(snake)-4:
 			highscore = len(snake)-4
-		pygame.draw.rect(fenetre, (128,128,128), [90,90,420,430])
-		pygame.draw.rect(fenetre, (212,212,212), [100,100,400,410])
-		textsurface = myotherfont.render('GAME OVER', False, (0,0,0))
+		pygame.draw.rect(fenetre, (250,128,114), [90,90,420,430])
+		pygame.draw.rect(fenetre, (216,191,216), [100,100,400,410])
+		textsurface = myotherfont.render('PERDEU', False, (0,0,0))
 		fenetre.blit(textsurface, (150, 105))
-		textsurface = myfont.render('Your score was : '+str(len(snake)-4), False, (0,0,0))
+		textsurface = myfont.render('Seu resultado : '+str(len(snake)-4), False, (0,0,0))
 		fenetre.blit(textsurface, (200, 200))
-		textsurface = myfont.render('Your highscore is '+str(highscore), False, (0,0,0))
+		textsurface = myfont.render('Seu melhor resultado: '+str(highscore), False, (0,0,0))
 		fenetre.blit(textsurface, (194, 260))
-		textsurface = myfont.render('For a new game click on the button below', False, (0,0,0))
+		textsurface = myfont.render('Para jogar novamente clique aqui', False, (0,0,0))
 		fenetre.blit(textsurface, (112, 320))
-		pygame.draw.circle(fenetre, (0,0,0), [290,430], 60)
-		pygame.draw.circle(fenetre, (128,128,128), [290,430], 50)
+		pygame.draw.circle(fenetre, (255,0,0), [290,430], 60)
+		pygame.draw.circle(fenetre, (255,0,0), [290,430], 50)
 		if clicked == 1: # if the user clicks on the button, color the button red
-			pygame.draw.circle(fenetre, (255,0,0), [290,430], 60)
+			pygame.draw.circle(fenetre, (0,255,0), [290,430], 60)
 	pygame.draw.rect(fenetre, (0,0,255), [600,0,10,20*diff]) # draw part of the move counter in blue
 
 show_snake() # initial snake drawing
@@ -296,13 +296,13 @@ while continuer == 0:
 		if event.type == QUIT:
 			continuer = 1
 		if event.type == KEYDOWN and lock == 0:
-			if event.key == K_RIGHT:
+			if event.key == K_RIGHT or event.key == K_d:
 				moves[0] = 1
-			if event.key == K_DOWN:
+			if event.key == K_DOWN or event.key == K_s:
 				moves[1] = 1
-			if event.key == K_LEFT:
+			if event.key == K_LEFT or event.key == K_a:
 				moves[2] = 1
-			if event.key == K_UP:
+			if event.key == K_UP or event.key == K_w:
 				moves[3] = 1
 		if event.type == KEYUP:
 			moves = [0,0,0,0]
